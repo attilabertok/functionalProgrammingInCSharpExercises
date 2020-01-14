@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 using FunctionalProgrammingBookExercises.Option;
 
@@ -9,6 +11,16 @@ namespace FunctionalProgrammingBookExercises
         public static Option.None None => Option.None.Default;
 
         public static Option<T> Some<T>(T value) => new Option.Some<T>(value);
+
+        public static Option<TResult> Bind<T, TResult>(this Option<T> source, Func<T, Option<TResult>> function) => source.Match(
+            () => None,
+            function
+        );
+
+        public static IEnumerable<TResult> Bind<T, TResult>(this IEnumerable<T> source, Func<T, IEnumerable<TResult>> function)
+        {
+            return source.SelectMany(function);
+        }
 
         public struct Option<T>
         {

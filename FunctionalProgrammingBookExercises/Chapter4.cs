@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
+using static FunctionalProgrammingBookExercises.Functional;
+
 namespace FunctionalProgrammingBookExercises
 {
     public static class Chapter4
@@ -39,6 +41,16 @@ namespace FunctionalProgrammingBookExercises
                 item => new KeyValuePair<TResultKey, TResultValue>(keyFunction(item.Key), valueFunction(item.Value)));
 
             return source.Map(function);
+        }
+
+        public static Option<TResult> Map<TSource, TResult>(this Option<TSource> source, Func<TSource, TResult> function)
+        {
+            return source.Bind(item => Some(function(item)));
+        }
+
+        public static IEnumerable<TResult> Map<TSource, TResult>(this IEnumerable<TSource> source, Func<TSource, TResult> function)
+        {
+            return source.Bind(item => new List<TResult> { function(item) });
         }
     }
 }
