@@ -14,6 +14,10 @@ namespace FunctionalProgrammingBookExercisesTests
         private const string DateKey = "DateKey";
         private static readonly DateTime DateValue = new DateTime(2020, 02, 02);
 
+        private const string DefaultString = "";
+        private const int DefaultInteger = 0;
+        private static readonly DateTime DefaultTime = default;
+
         public static TheoryData<string, DateTime> DateTimeData => new TheoryData<string, DateTime>
         {
             {

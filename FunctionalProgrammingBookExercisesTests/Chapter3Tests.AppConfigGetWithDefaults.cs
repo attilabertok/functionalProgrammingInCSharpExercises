@@ -16,7 +16,7 @@ namespace FunctionalProgrammingBookExercisesTests
         {
             [Theory]
             [InlineData(StringKey, StringValue)]
-            [InlineData(InvalidKey, "")]
+            [InlineData(InvalidKey, DefaultString)]
             public void Should_ReturnValue_When_TypeIsString(string key, string value)
             {
                 var input = new NameValueCollection
@@ -28,7 +28,7 @@ namespace FunctionalProgrammingBookExercisesTests
 
                 var sut = new Chapter3.AppConfig(input);
 
-                var result = sut.Get(key, string.Empty);
+                var result = sut.Get(key, DefaultString);
 
                 result.Should().Be(value);
             }
@@ -47,7 +47,7 @@ namespace FunctionalProgrammingBookExercisesTests
 
                 var sut = new Chapter3.AppConfig(input);
 
-                var result = sut.Get(key, 0);
+                var result = sut.Get(key, DefaultInteger);
 
                 result.Should().Be(value);
             }
@@ -65,7 +65,7 @@ namespace FunctionalProgrammingBookExercisesTests
 
                 var sut = new Chapter3.AppConfig(input);
 
-                var result = sut.Get<DateTime>(key, default);
+                var result = sut.Get(key, DefaultTime);
 
                 result.Should().Be(value);
             }
