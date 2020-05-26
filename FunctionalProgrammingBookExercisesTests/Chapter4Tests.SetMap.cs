@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Globalization;
 
 using FluentAssertions;
 
@@ -10,7 +11,7 @@ namespace FunctionalProgrammingBookExercisesTests
 {
     public partial class Chapter4Tests
     {
-        public class SetMap
+        public class SetMap : Chapter4Tests
         {
             [Fact]
             public void Should_KeepItemsIntact_When_FunctionIsIdentity()
@@ -37,9 +38,9 @@ namespace FunctionalProgrammingBookExercisesTests
             public void Should_MapAsExpected_When_FunctionChangesType()
             {
                 var originalSet = new HashSet<int> { 1, 2, 3 };
-                var expectedResult = new HashSet<string> { 1.ToString(), 2.ToString(), 3.ToString() };
+                var expectedResult = new HashSet<string> { 1.ToString(CultureInfo.InvariantCulture), 2.ToString(CultureInfo.InvariantCulture), 3.ToString(CultureInfo.InvariantCulture) };
 
-                var result = originalSet.Map(i => i.ToString());
+                var result = originalSet.Map(i => i.ToString(CultureInfo.InvariantCulture));
 
                 result.Should().BeEquivalentTo(expectedResult);
             }

@@ -11,7 +11,7 @@ namespace FunctionalProgrammingBookExercisesTests
 {
     public partial class Chapter1Tests
     {
-        public class QuickSort
+        public class QuickSort : Chapter1Tests
         {
             [Fact]
             public void Should_KeepTheOriginalListUnmodified()

@@ -9,6 +9,11 @@ namespace FunctionalProgrammingBookExercises
     {
         public static ISet<TResult> Map<TSource, TResult>(this ISet<TSource> source, Func<TSource, TResult> function)
         {
+            if (source == null)
+            {
+                throw new ArgumentNullException(nameof(source));
+            }
+
             var result = new HashSet<TResult>(source.Count);
             foreach (var item in source)
             {
@@ -22,6 +27,11 @@ namespace FunctionalProgrammingBookExercises
             this IDictionary<TSourceKey, TSourceValue> source,
             Func<KeyValuePair<TSourceKey, TSourceValue>, KeyValuePair<TResultKey, TResultValue>> function)
         {
+            if (source == null)
+            {
+                throw new ArgumentNullException(nameof(source));
+            }
+
             var result = new Dictionary<TResultKey, TResultValue>(source.Count);
             foreach (var item in source)
             {

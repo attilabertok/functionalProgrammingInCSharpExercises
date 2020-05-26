@@ -29,13 +29,25 @@ namespace FunctionalProgrammingBookExercises
         public static TResult Using<TDisposable, TResult>(TDisposable disposable, Func<TDisposable, TResult> function)
             where TDisposable : IDisposable
         {
-            using (disposable) 
+            if (function == null)
+            {
+                throw new ArgumentNullException(nameof(function));
+            }
+
+            using (disposable)
+            {
                 return function(disposable);
+            }
         }
 
         public static TResult Using<TDisposable, TResult>(Func<TDisposable> disposableFactory, Func<TDisposable, TResult> function)
             where TDisposable : IDisposable
         {
+            if (disposableFactory == null)
+            {
+                throw new ArgumentNullException(nameof(disposableFactory));
+            }
+
             using var disposable = disposableFactory.Invoke();
             return function(disposable);
         }

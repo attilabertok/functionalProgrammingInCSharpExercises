@@ -8,7 +8,7 @@ namespace FunctionalProgrammingBookExercisesTests
 {
     public partial class Chapter3Tests
     {
-        public class EmailType
+        public class EmailType : Chapter3Tests
         {
             [Theory]
             [InlineData("abc@def.gh")]

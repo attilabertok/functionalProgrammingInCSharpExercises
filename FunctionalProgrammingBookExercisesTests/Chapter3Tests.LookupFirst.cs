@@ -13,7 +13,7 @@ namespace FunctionalProgrammingBookExercisesTests
 {
     public partial class Chapter3Tests
     {
-        public static class LookupFirst
+        public class LookupFirst : Chapter3Tests
         {
             public static TheoryData<List<int>, Func<int, bool>, Option<int>> IntegerData => new TheoryData<List<int>, Func<int, bool>, Option<int>>
             {
@@ -55,7 +55,7 @@ namespace FunctionalProgrammingBookExercisesTests
 
             [Theory]
             [MemberData(nameof(IntegerData))]
-            public static void Should_ReturnFirstMatchingResult_When_InputIsInteger(List<int> enumerable, Func<int, bool> predicate, Option<int> expectedResult)
+            public void Should_ReturnFirstMatchingResult_When_InputIsInteger(List<int> enumerable, Func<int, bool> predicate, Option<int> expectedResult)
             {
                 var result = enumerable.LookupFirst(predicate);
 
@@ -64,7 +64,7 @@ namespace FunctionalProgrammingBookExercisesTests
 
             [Theory]
             [MemberData(nameof(StringData))]
-            public static void Should_ReturnFirstMatchingResult_When_InputIsString(List<string> enumerable, Func<string, bool> predicate, Option<string> expectedResult)
+            public void Should_ReturnFirstMatchingResult_When_InputIsString(List<string> enumerable, Func<string, bool> predicate, Option<string> expectedResult)
             {
                 var result = enumerable.LookupFirst(predicate);
 

@@ -11,7 +11,7 @@ namespace FunctionalProgrammingBookExercisesTests
 {
     public partial class Chapter2Tests
     {
-        public class CalculateBmi
+        public class CalculateBmi : Chapter2Tests
         {
             [Theory]
             [InlineData(2, 70, Chapter2.BmiClassification.Underweight)]
@@ -23,7 +23,11 @@ namespace FunctionalProgrammingBookExercisesTests
                 var bmiClassification = Chapter2.BmiClassification.None;
                 decimal GetHeightFake() => height;
                 decimal GetWeightFake() => weight;
-                void WriteOutputFake(Chapter2.BmiClassification result) { bmiClassification = result; }
+
+                void WriteOutputFake(Chapter2.BmiClassification result)
+                {
+                    bmiClassification = result;
+                }
 
                 static Action<Chapter2.BmiClassification> LogConsoleOutput(Action<Chapter2.BmiClassification> result, StringBuilder buffer)
                 {

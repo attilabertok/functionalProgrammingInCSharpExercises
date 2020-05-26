@@ -10,7 +10,7 @@ namespace FunctionalProgrammingBookExercisesTests
 {
     public partial class Chapter1Tests
     {
-        public class Negate
+        public class Negate : Chapter1Tests
         {
             [Fact]
             public void Should_ReturnFalse_When_TheOriginalPredicateReturnsTrue()

@@ -11,7 +11,11 @@ namespace FunctionalProgrammingBookExercisesTests
 {
     public partial class Chapter1Tests
     {
-        public class Using
+        [System.Diagnostics.CodeAnalysis.SuppressMessage(
+            "Naming",
+            "CA1716:Identifiers should not match keywords",
+            Justification = "The method is an alternative for the keyword")]
+        public class Using : Chapter1Tests
         {
             [Fact]
             public void Should_ReturnCorrectValueBeforeDisposing()
@@ -24,6 +28,10 @@ namespace FunctionalProgrammingBookExercisesTests
             }
 
             [Fact]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage(
+                "Reliability",
+                "CA2000:Dispose objects before losing scope",
+                Justification = "The code is disposing")]
             public void Should_DisposeDisposable()
             {
                 var disposable = new BooleanDisposable();

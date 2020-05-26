@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Configuration;
+using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
 
@@ -30,21 +31,21 @@ namespace FunctionalProgrammingBookExercises
             }
         }
 
-        public class Email
+        public sealed class Email
         {
             private static readonly Regex Regex = new Regex(@"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$");
 
+            private Email(string value) => Value = value;
+
             private string Value { get; }
 
-            private Email(string value) => Value = value;
+            public static implicit operator string(Email email)
+                => email?.Value;
 
             public static Option<Email> Create(string address)
                 => Regex.IsMatch(address)
                     ? Some(new Email(address))
                     : None;
-
-            public static implicit operator string(Email email)
-                => email.Value;
         }
 
         public class AppConfig
@@ -66,7 +67,7 @@ namespace FunctionalProgrammingBookExercises
                 var value = source[name];
                 return value == null
                     ? None
-                    : Some((T)Convert.ChangeType(value, typeof(T)));
+                    : Some((T)Convert.ChangeType(value, typeof(T), CultureInfo.InvariantCulture));
             }
 
             public T Get<T>(string name, T defaultValue)

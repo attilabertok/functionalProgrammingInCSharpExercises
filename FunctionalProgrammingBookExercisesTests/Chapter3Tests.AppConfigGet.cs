@@ -3,6 +3,7 @@ using System.Collections.Specialized;
 using System.Globalization;
 
 using FluentAssertions;
+
 using FunctionalProgrammingBookExercises;
 
 using Xunit;
@@ -20,9 +21,9 @@ namespace FunctionalProgrammingBookExercisesTests
             {
                 var input = new NameValueCollection
                 {
-                    { StringKey, StringValue },
-                    { IntegerKey, IntegerValue.ToString() },
-                    { DateKey, DateValue.ToString(CultureInfo.InvariantCulture) }
+                    [StringKey] = StringValue,
+                    [IntegerKey] = IntegerValue.ToString(CultureInfo.InvariantCulture),
+                    [DateKey] = DateValue.ToString(CultureInfo.InvariantCulture)
                 };
 
                 var sut = new Chapter3.AppConfig(input);
@@ -39,9 +40,9 @@ namespace FunctionalProgrammingBookExercisesTests
             {
                 var input = new NameValueCollection
                 {
-                    { StringKey, StringValue },
-                    { IntegerKey, IntegerValue.ToString() },
-                    { DateKey, DateValue.ToString(CultureInfo.InvariantCulture) }
+                    [StringKey] = StringValue,
+                    [IntegerKey] = IntegerValue.ToString(CultureInfo.InvariantCulture),
+                    [DateKey] = DateValue.ToString(CultureInfo.InvariantCulture)
                 };
 
                 var sut = new Chapter3.AppConfig(input);
@@ -57,9 +58,9 @@ namespace FunctionalProgrammingBookExercisesTests
             {
                 var input = new NameValueCollection
                 {
-                    { StringKey, StringValue },
-                    { IntegerKey, IntegerValue.ToString() },
-                    { DateKey, DateValue.ToString(CultureInfo.InvariantCulture) }
+                    [StringKey] = StringValue,
+                    [IntegerKey] = IntegerValue.ToString(CultureInfo.InvariantCulture),
+                    [DateKey] = DateValue.ToString(CultureInfo.InvariantCulture)
                 };
 
                 var sut = new Chapter3.AppConfig(input);
